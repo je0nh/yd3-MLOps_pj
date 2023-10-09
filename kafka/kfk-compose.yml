@@ -1,8 +1,15 @@
 version: "3.0"
+
+networks:
+  kafka-net:
+    driver: bridge
+
 services:
   zk1:
     container_name: zk1
     image: zookeeper:3.5
+    networks:
+      - kafka-net
     restart: always
     hostname: zk1
     ports:
@@ -16,6 +23,8 @@ services:
   zk2:
     container_name: zk2
     image: zookeeper:3.5
+    networks:
+      - kafka-net
     restart: always
     hostname: zk2
     ports:
@@ -29,6 +38,8 @@ services:
   zk3:
     container_name: zk3
     image: zookeeper:3.5
+    networks:
+      - kafka-net
     restart: always
     hostname: zk3
     ports:
@@ -43,6 +54,8 @@ services:
     container_name: kafka1
     hostname: kafka1
     image: docker.io/bitnami/kafka:latest
+    networks:
+      - kafka-net
     restart: on-failure
     ports:
       - "19092:19092"
@@ -65,6 +78,8 @@ services:
     container_name: kafka2
     hostname: kafka2
     image: docker.io/bitnami/kafka:latest
+    networks:
+      - kafka-net
     restart: on-failure
     ports:
       - "29092:29092"
@@ -87,6 +102,8 @@ services:
     container_name: kafka3
     hostname: kafka3
     image: docker.io/bitnami/kafka:latest
+    networks:
+      - kafka-net
     restart: on-failure
     ports:
       - "39092:39092"
@@ -104,6 +121,45 @@ services:
       - zk1
       - zk2
       - zk3
+
+  zookeeper-navigator:
+    hostname: zookeeper-navigator
+    container_name: zookeeper-navigator
+    image: elkozmon/zoonavigator:1.1.2
+    networks:
+      - kafka-net
+    restart: always
+    ports:
+      - 9000:9000
+    environment:
+      HTTP_PORT: 9000
+    depends_on:
+      - zk1
+      - zk2
+      - zk3
+
+  kafka-ui:
+    container_name: kafka-ui
+    image: provectuslabs/kafka-ui:latest
+    networks:
+      - kafka-net
+    ports:
+      - 8082:8080
+    environment:
+      - KAFKA_CLUSTERS_0_NAME=local
+      - KAFKA_CLUSTERS_0_BOOTSTRAPSERVERS=kafka1:19092
+        #- KAFKA_CLUSTERS_1_NAME=secondLocal
+        #- KAFKA_CLUSTERS_1_BOOTSTRAPSERVERS=kafka2:29092
+        #- KAFKA_CLUSTERS_2_NAME=thirdLocal
+        #- KAFKA_CLUSTERS_2_BOOTSTRAPSERVERS=kafka3:39092
+        #- SERVER_SERVLET_CONTEXT_PATH=/kafkaui
+      - AUTH_TYPE=LOGIN_FORM
+      - SPRING_SECURITY_USER_NAME=admin
+      - SPRING_SECURITY_USER_PASSWORD=1234
+    depends_on:
+      - kafka1
+      - kafka2
+      - kafka3
 
 volumes:
   zk1_data:
