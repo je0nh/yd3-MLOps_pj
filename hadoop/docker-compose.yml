@@ -1,0 +1,160 @@
+version: "3"
+
+services:
+  namenode1:
+    image: hadoop-base
+    container_name: namenode1
+    hostname: namenode1
+    restart: always
+    volumes:
+      - hadoop_namenode1:/hadoop/dfs/name1
+    networks:
+      hadoop-network:
+        ipv4_address: 172.29.0.3
+    command: sh -c "sed -i 's/#PermitRootLogin prohibit-password/PermitRootLogin yes/' /etc/ssh/sshd_config &&
+                    sed -ri 's/UsePAM yes/#UsePAM yes/g' /etc/ssh/sshd_config &&
+                    ssh-keygen -q -t rsa -N '' -f ~/.ssh/id_rsa &&
+                    cp ~/.ssh/id_rsa.pub ~/.ssh/authorized_keys &&
+                    echo '172.29.0.3  namenode1' >> /etc/hosts &&
+                    echo '172.29.0.4  namenode2' >> /etc/hosts &&
+                    echo '172.29.0.5  namenode3' >> /etc/hosts &&
+                    echo '172.29.0.6  datanode1' >> /etc/hosts &&
+                    echo '172.29.0.7  datanode2' >> /etc/hosts &&
+                    echo '172.29.0.8  datanode3' >> /etc/hosts &&
+                    rm /usr/local/zookeeper/data/myid &&
+                    echo '1' >> /usr/local/zookeeper/data/myid &&
+                    service ssh start &&
+                    tail -f /dev/null"
+
+  namenode2:
+    image: hadoop-base
+    container_name: namenode2
+    hostname: namenode2
+    restart: always
+    volumes:
+      - hadoop_namenode2:/hadoop/dfs/name2
+    networks:
+      hadoop-network:
+        ipv4_address: 172.29.0.4
+    command: sh -c "sed -i 's/#PermitRootLogin prohibit-password/PermitRootLogin yes/' /etc/ssh/sshd_config &&
+                    sed -ri 's/UsePAM yes/#UsePAM yes/g' /etc/ssh/sshd_config &&
+                    ssh-keygen -q -t rsa -N '' -f ~/.ssh/id_rsa &&
+                    cp ~/.ssh/id_rsa.pub ~/.ssh/authorized_keys &&
+                    echo '172.29.0.3  namenode1' >> /etc/hosts &&
+                    echo '172.29.0.4  namenode2' >> /etc/hosts &&
+                    echo '172.29.0.5  namenode3' >> /etc/hosts &&
+                    echo '172.29.0.6  datanode1' >> /etc/hosts &&
+                    echo '172.29.0.7  datanode2' >> /etc/hosts &&
+                    echo '172.29.0.8  datanode3' >> /etc/hosts &&
+                    rm /usr/local/zookeeper/data/myid &&
+                    echo '2' >> /usr/local/zookeeper/data/myid &&
+                    service ssh start &&
+                    tail -f /dev/null
+                    "
+
+  namenode3:
+    image: hadoop-base
+    container_name: namenode3
+    hostname: namenode3
+    restart: always
+    volumes:
+      - hadoop_namenode3:/hadoop/dfs/name3
+    networks:
+      hadoop-network:
+        ipv4_address: 172.29.0.5
+    command: sh -c "sed -i 's/#PermitRootLogin prohibit-password/PermitRootLogin yes/' /etc/ssh/sshd_config &&
+                    sed -ri 's/UsePAM yes/#UsePAM yes/g' /etc/ssh/sshd_config &&
+                    ssh-keygen -q -t rsa -N '' -f ~/.ssh/id_rsa &&
+                    cp ~/.ssh/id_rsa.pub ~/.ssh/authorized_keys &&
+                    echo '172.29.0.3  namenode1' >> /etc/hosts &&
+                    echo '172.29.0.4  namenode2' >> /etc/hosts &&
+                    echo '172.29.0.5  namenode3' >> /etc/hosts &&
+                    echo '172.29.0.6  datanode1' >> /etc/hosts &&
+                    echo '172.29.0.7  datanode2' >> /etc/hosts &&
+                    echo '172.29.0.8  datanode3' >> /etc/hosts &&
+                    rm /usr/local/zookeeper/data/myid &&
+                    echo '3' >> /usr/local/zookeeper/data/myid &&
+                    service ssh start &&
+                    tail -f /dev/null"
+
+  datanode1:
+    image: hadoop-base
+    container_name: datanode1
+    hostname: datanode1
+    restart: always
+    volumes:
+      - hadoop_datanode1:/hadoop/dfs/data1
+    networks:
+      hadoop-network:
+        ipv4_address: 172.29.0.6
+    command: sh -c "sed -i 's/#PermitRootLogin prohibit-password/PermitRootLogin yes/' /etc/ssh/sshd_config &&
+                    sed -ri 's/UsePAM yes/#UsePAM yes/g' /etc/ssh/sshd_config &&
+                    ssh-keygen -q -t rsa -N '' -f ~/.ssh/id_rsa &&
+                    cp ~/.ssh/id_rsa.pub ~/.ssh/authorized_keys &&
+                    echo '172.29.0.3  namenode1' >> /etc/hosts &&
+                    echo '172.29.0.4  namenode2' >> /etc/hosts &&
+                    echo '172.29.0.5  namenode3' >> /etc/hosts &&
+                    echo '172.29.0.6  datanode1' >> /etc/hosts &&
+                    echo '172.29.0.7  datanode2' >> /etc/hosts &&
+                    echo '172.29.0.8  datanode3' >> /etc/hosts &&
+                    service ssh start &&
+                    tail -f /dev/null"
+
+
+  datanode2:
+    image: hadoop-base
+    container_name: datanode2
+    hostname: datanode2
+    restart: always
+    volumes:
+      - hadoop_datanode2:/hadoop/dfs/data2
+    networks:
+      hadoop-network:
+        ipv4_address: 172.29.0.7
+    command: sh -c "sed -i 's/#PermitRootLogin prohibit-password/PermitRootLogin yes/' /etc/ssh/sshd_config &&
+                    sed -ri 's/UsePAM yes/#UsePAM yes/g' /etc/ssh/sshd_config &&
+                    echo '172.29.0.3  namenode1' >> /etc/hosts &&
+                    echo '172.29.0.4  namenode2' >> /etc/hosts &&
+                    echo '172.29.0.5  namenode3' >> /etc/hosts &&
+                    echo '172.29.0.6  datanode1' >> /etc/hosts &&
+                    echo '172.29.0.7  datanode2' >> /etc/hosts &&
+                    echo '172.29.0.8  datanode3' >> /etc/hosts &&
+                    service ssh start &&
+                    tail -f /dev/null"
+
+  datanode3:
+    image: hadoop-base
+    container_name: datanode3
+    hostname: datanode3
+    restart: always
+    volumes:
+      - hadoop_datanode3:/hadoop/dfs/data3
+    networks:
+      hadoop-network:
+        ipv4_address: 172.29.0.8
+    command: sh -c "sed -i 's/#PermitRootLogin prohibit-password/PermitRootLogin yes/' /etc/ssh/sshd_config &&
+                    sed -ri 's/UsePAM yes/#UsePAM yes/g' /etc/ssh/sshd_config &&
+                    ssh-keygen -q -t rsa -N '' -f ~/.ssh/id_rsa &&
+                    cp ~/.ssh/id_rsa.pub ~/.ssh/authorized_keys &&
+                    echo '172.29.0.3  namenode1' >> /etc/hosts &&
+                    echo '172.29.0.4  namenode2' >> /etc/hosts &&
+                    echo '172.29.0.5  namenode3' >> /etc/hosts &&
+                    echo '172.29.0.6  datanode1' >> /etc/hosts &&
+                    echo '172.29.0.7  datanode2' >> /etc/hosts &&
+                    echo '172.29.0.8  datanode3' >> /etc/hosts &&
+                    service ssh start &&
+                    tail -f /dev/null"
+
+
+volumes:
+  hadoop_namenode1:
+  hadoop_namenode2:
+  hadoop_namenode3:
+  hadoop_datanode1:
+  hadoop_datanode2:
+  hadoop_datanode3:
+
+networks:
+  hadoop-network:
+    name: hadoop_network
+    external: true
