@@ -143,6 +143,7 @@ services:
     image: provectuslabs/kafka-ui:latest
     networks:
       - kafka-net
+    restart: on-failure
     ports:
       - 8082:8080
     environment:
