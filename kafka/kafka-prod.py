@@ -2,6 +2,7 @@ import subprocess
 from kafka import KafkaProducer
 from json import dumps
 import time
+import requests
 
 shell_command = 'bash ./container-ip.sh'
 
@@ -18,7 +19,7 @@ kafka3_server = ip_addresses[14] + ':39094'
 def on_send_success(record_metadata):
     # 보낸데이터의 매타데이터를 출력한다
     print("record_metadata:", record_metadata)
-    
+
 # 카프카 서버
 bootstrap_servers = [kafka1_server, kafka2_server, kafka3_server]
 
