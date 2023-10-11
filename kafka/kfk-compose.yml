@@ -1,15 +1,16 @@
 version: "3.0"
 
 networks:
-  kafka-net:
-    driver: bridge
+  team09_network:
+    name: team09_network
+    external: true
 
 services:
   zk1:
     container_name: zk1
     image: zookeeper:3.5
     networks:
-      - kafka-net
+      team09_network:
     restart: always
     hostname: zk1
     ports:
@@ -24,7 +25,7 @@ services:
     container_name: zk2
     image: zookeeper:3.5
     networks:
-      - kafka-net
+      team09_network:
     restart: always
     hostname: zk2
     ports:
@@ -39,7 +40,7 @@ services:
     container_name: zk3
     image: zookeeper:3.5
     networks:
-      - kafka-net
+      team09_network:
     restart: always
     hostname: zk3
     ports:
@@ -55,7 +56,8 @@ services:
     hostname: kafka1
     image: docker.io/bitnami/kafka:latest
     networks:
-      - kafka-net
+      team09_network:
+        ipv4_address: 172.9.0.10 
     restart: on-failure
     ports:
       - "19092:19092"
@@ -79,7 +81,8 @@ services:
     hostname: kafka2
     image: docker.io/bitnami/kafka:latest
     networks:
-      - kafka-net
+      team09_network:
+        ipv4_address: 172.9.0.11    
     restart: on-failure
     ports:
       - "29092:29092"
@@ -103,7 +106,8 @@ services:
     hostname: kafka3
     image: docker.io/bitnami/kafka:latest
     networks:
-      - kafka-net
+      team09_network:
+        ipv4_address: 172.9.0.12
     restart: on-failure
     ports:
       - "39092:39092"
@@ -127,7 +131,7 @@ services:
     container_name: zookeeper-navigator
     image: elkozmon/zoonavigator:1.1.2
     networks:
-      - kafka-net
+      team09_network:
     restart: always
     ports:
       - 9000:9000
@@ -142,7 +146,7 @@ services:
     container_name: kafka-ui
     image: provectuslabs/kafka-ui:latest
     networks:
-      - kafka-net
+      team09_network:
     restart: on-failure
     ports:
       - 8082:8080
