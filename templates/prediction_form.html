@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Prediction Form</title>
+</head>
+<body>
+  <h1>Prediction Form</h1>
+  <form method="post" action="{{ url_for('predict') }}">
+    {{ form.csrf_token }}
+    <!-- Add any form fields you need here -->
+    <input type="submit" value="Submit">
+  </form>
+
+  {% if predictions %}
+    <h2>Predictions:</h2>
+    <ul>
+      {% for prediction in predictions %}
+        <li>{{ prediction }}</li>
+      {% endfor %}
+    </ul>
+  {% endif %}
+</body>
+</html>
