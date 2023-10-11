@@ -31,7 +31,22 @@ producer = KafkaProducer(bootstrap_servers=bootstrap_servers,
 str_topic_name = 'kfk-test'
 
 # 카프카 공급자 토픽에 데이터를 보낸다
-data = {"time": time.time()}
-producer.send(str_topic_name, value=data).add_callback(on_send_success)\
+key = "7558457878736b7933374f6544556b"
+url = f"http://openapi.seoul.go.kr:8088/{key}/json/airPolutionMeasuring1Hour/1/999/"
+
+response = requests.get(url)
+response.raise_for_status()  # raises exception when not a 2xx response
+
+print(response.status_code)
+
+if response.status_code != 204 and response.headers["content-type"].strip().startswith("application/json"):
+    try:
+        print("try?")
+        responseDic = response.json()
+        print("success")
+    except ValueError:
+        print("error") # decide how to handle a server that's misbehaving to this extent
+
+producer.send(str_topic_name, value=responseDic).add_callback(on_send_success)\
                                          .get(timeout=100) # blocking maximum timeout
-print('data:', data)
+print('data:', responseDic)
