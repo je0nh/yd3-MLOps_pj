@@ -8,8 +8,25 @@
   <h1>Prediction Form</h1>
   <form method="post" action="{{ url_for('predict') }}">
     {{ form.csrf_token }}
-    <!-- Add any form fields you need here -->
-    <input type="submit" value="Submit">
+    <label for="time">Time:</label>
+    {{ form.time }}
+    <br>
+    <label for="gu">Gu:</label>
+    {{ form.gu }}
+    <br>
+    <label for="traffic">Traffic:</label>
+    {{ form.traffic }}
+    <br>
+    <label for="year">Year:</label>
+    {{ form.year }}
+    <br>
+    <label for="month">Month:</label>
+    {{ form.month }}
+    <br>
+    <label for="day">Day:</label>
+    {{ form.day }}
+    <br>
+    {{ form.submit }}
   </form>
 
   {% if predictions %}
