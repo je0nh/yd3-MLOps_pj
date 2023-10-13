@@ -11,6 +11,10 @@ def hello_world():
     preds = model.predict(test_np_input)
     print(preds)
     preds_as_str = str(preds)
+    # DataFrame을 JSON 형식으로 변환
+    # json_data = df.to_json(orient='records')
+    #return jsonify(json_data)
+
     return preds_as_str
 
 if __name__ == '__main__':
