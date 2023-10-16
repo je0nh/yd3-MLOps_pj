@@ -6,8 +6,8 @@ app = Flask(__name__)
 
 @app.route('/')
 def hello_world():
-    test_np_input = np.array([1,21,43.0, 16.0, 0.025, 0.005, 0.012, 0.2,2018,4,17]).reshape(1, -1).astype(float)
-    model = load('lgbm_model.pkl')
+    test_np_input = np.array([1,21,43.0, 16.0, 0.025, 0.005, 0.012, 0.2,2018,4,14]).reshape(1, -1).astype(float)
+    model = load('C:/Users/jeong bok/Documents/cse101/team9PJ/mlops-team9/py/lgbm_model.pkl')
     preds = model.predict(test_np_input)
     print(preds)
     preds_as_str = str(preds)
