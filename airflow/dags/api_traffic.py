@@ -14,7 +14,7 @@ class TrafficProcessor:
     def load_traffic_data(self):
 
         datas = []
-
+        #return json.dumps({'date':23}, ensure_ascii=False)
         now = datetime.now()
         YMD = now.strftime('%Y%m%d')
         HH = (now - timedelta(hours=1)).strftime('%H')
@@ -64,4 +64,4 @@ class TrafficProcessor:
             i+=1
 
 
-        return json.dumps(datas, ensure_ascii=False)
+        return datas#json.dumps(datas, ensure_ascii=False)

@@ -5,6 +5,7 @@ from datetime import datetime, timedelta
 
 from api_pollution import PollutionProcessor
 from api_traffic import TrafficProcessor
+from kafka_producer import Producer
 
 
 # Airflow DAG 정의
@@ -44,14 +45,20 @@ def send_to_topic():
     #py파일 직접 실행
     #from subprocess import call
     #call(["python", "/opt/airflow/dags/kafka_producer.py", "", "--param1", "", "--param2", ""])    
+    
+    
     pd = Variable.get("pd_val")
-    print(pd)
-    # 대기 데이터 전송 코드 Topic -> kfk-pollution
-    
-    
     td = Variable.get("td_val")
-    print(td)
-    # 교통량 데이터 전송 코드 Topic -> kfk-traffic
+    
+    #커스텀 프로듀서 객체 생성
+    kafka = Producer()
+    
+    # 대기 데이터 전송 코드 Topic -> kfk-pollution
+    kafka.send("kfk-pollution",pd)    
+    
+    # 교통량 데이터 전송 코드 Topic -> kfk-traffic  
+    kafka.send("kfk-traffic",td)
+    
 
 
 call_api_pollution = PythonOperator(
