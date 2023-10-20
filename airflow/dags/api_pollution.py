@@ -12,6 +12,8 @@ class PollutionProcessor:
 
     def load_pollution_data(self):
         datas = []
+        
+        #return json.dumps({'date':23}, ensure_ascii=False)
 
         url_pollution = f'http://openAPI.seoul.go.kr:8088/414c516d6462656137354c486f7052/json/RealtimeCityAir/1/25/'
 
@@ -38,4 +40,4 @@ class PollutionProcessor:
             #print(data)
             datas.append(data)
 
-        return json.dumps(datas, ensure_ascii=False)
+        return datas
