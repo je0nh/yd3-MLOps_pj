@@ -2,9 +2,11 @@ from airflow import DAG
 from airflow.operators.python_operator import PythonOperator
 from airflow.models import Variable
 from datetime import datetime, timedelta
+
 from api_traffic import TrafficProcessor
 from api_pollution import PollutionProcessor
 from kafka_producer import KafkaProducerWrapper
+
 
 # Airflow DAG 정의
 default_args = {
@@ -80,4 +82,3 @@ send_to_kfk_traffic = PythonOperator(
 # 작업 간의 관계 설정
 [call_api_pollution >> send_to_kfk_pollution ]
 [call_api_traffic >>send_to_kfk_traffic]
-
