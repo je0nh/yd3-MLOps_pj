@@ -3,9 +3,9 @@ from airflow.operators.python_operator import PythonOperator
 from airflow.models import Variable
 from datetime import datetime, timedelta
 
-from api_pollution import PollutionProcessor
 from api_traffic import TrafficProcessor
-from kafka_producer import Producer
+from api_pollution import PollutionProcessor
+from kafka_producer import KafkaProducerWrapper
 
 
 # Airflow DAG 정의
@@ -19,65 +19,66 @@ default_args = {
 dag = DAG(
     'fetchdata_from_seoul_data',
     default_args=default_args,
-    #schedule_interval=timedelta(minutes=120),
-    schedule_interval="30 0,2,4,6,8,10,12,14,16,18,20,22 * * *",  # 홀수 시의 30분마다 실행???
+    schedule_interval="30 0,2,4,6,8,10,12,14,16,18,20,22 * * *",  # 홀수 시의 30분마다 실행
     catchup=False,
 )
 
-#대기 데이터 api 호출
+# 대기 데이터 api 호출
 def run_api_pollution():
-    #/opt/airflow/dags/api_pollution.py
     print("run_api_pollution")
     p = PollutionProcessor()
     pd = p.load_pollution_data()
-    Variable.set("pd_val",pd)
-    
-#교통량 데이터 api 호출
+    return pd
+
+# 교통량 데이터 api 호출
 def run_api_traffic():
-    #/opt/airflow/dags/api_traffic.py
     print("run_api_traffic")
     t = TrafficProcessor()
     td = t.load_traffic_data()
-    Variable.set("td_val",td)
-    
-#받은 데이터 카프카 토픽 전송
-def send_to_topic():
-    #py파일 직접 실행
-    #from subprocess import call
-    #call(["python", "/opt/airflow/dags/kafka_producer.py", "", "--param1", "", "--param2", ""])    
-    
-    
-    pd = Variable.get("pd_val")
-    td = Variable.get("td_val")
-    
-    #커스텀 프로듀서 객체 생성
-    kafka = Producer()
-    
-    # 대기 데이터 전송 코드 Topic -> kfk-pollution
-    kafka.send("kfk-pollution",pd)    
-    
-    # 교통량 데이터 전송 코드 Topic -> kfk-traffic  
-    kafka.send("kfk-traffic",td)
-    
+    return td
+
+# 받은 데이터 카프카 토픽 전송
+def send_to_kfk_pollution(**context):
+    kafka_topic_name = 'kfk-pollution'
+    data = context['task_instance'].xcom_pull(task_ids='call_api_pollution')
+    kafka_producer_instance = KafkaProducerWrapper(topic=kafka_topic_name, data=data)
+    kafka_producer_instance.send_data_to_kafka()
+
+# 받은 데이터 카프카 토픽 전송
+def send_to_kfk_traffic(**context):
+    kafka_topic_name = 'kfk-traffic'
+    data = context['task_instance'].xcom_pull(task_ids='call_api_traffic')
+    kafka_producer_instance = KafkaProducerWrapper(topic=kafka_topic_name, data=data)
+    kafka_producer_instance.send_data_to_kafka()
 
 
+# 태스크 정의
 call_api_pollution = PythonOperator(
     task_id='call_api_pollution',
     python_callable=run_api_pollution,
     dag=dag,
+    provide_context=True
 )
 
 call_api_traffic = PythonOperator(
     task_id='call_api_traffic',
     python_callable=run_api_traffic,
     dag=dag,
+    provide_context=True
 )
 
-send_to_topic = PythonOperator(
-    task_id='send_to_topic',
-    python_callable=send_to_topic,
+send_to_kfk_pollution = PythonOperator(
+    task_id='send_to_kfk_pollution',
+    python_callable=send_to_kfk_pollution,
+    dag=dag,
+)
+
+send_to_kfk_traffic = PythonOperator(
+    task_id='send_to_kfk_traffic',
+    python_callable=send_to_kfk_traffic,
     dag=dag,
 )
 
 # 작업 간의 관계 설정
-call_api_pollution >> call_api_traffic >> send_to_topic
+[call_api_pollution >> send_to_kfk_pollution ]
+[call_api_traffic >>send_to_kfk_traffic]
