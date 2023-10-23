@@ -78,3 +78,13 @@ services:
     environment: 
       - POSTGRES_PASSWORD=1234
 
+
+  adminer:
+    hostname: adminer
+    container_name: adminer
+    image: adminer
+    networks:
+      team09_network:
+    restart: always
+    ports:
+      - 5053:5053
