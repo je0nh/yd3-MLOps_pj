@@ -38,30 +38,27 @@ class TrafficProcessor:
             'F-07', 'F-08', 'F-09', 'F-10'
         ]
                 
+        # 에러가 발생한 경우에 (xml데이터가 잘못된경우) 인덱스를 조절하기 위해 와일문으로 변경
         i = 0
-        
-        while i < len(spot_list): 
+        while i < len(spot_list):
             url_traffic = f'http://openapi.seoul.go.kr:8088/414c516d6462656137354c486f7052/xml/VolInfo/1/5/{spot_list[i]}/{YMD}/{HH}/'
             print(url_traffic)
             response = requests.get(url_traffic)
-            if not response:
-                print("api response was null value")
-                i-=1
-                continue
-            #print(response.text)
 
-            tree = elemTree.fromstring(response.text)
-            #print(len(tree.find('./row')))
-            sum_vol = 0
-            for row in tree.findall('./row'):
-                #print('---', spot, '---')
-                vol = row.find('vol').text
-                sum_vol += int(vol)
-                #print(sum_vol)
-
-            data = {'date': YMD, 'hour': HH, 'spot': spot_list[i], 'vol': sum_vol}
-            datas.append(data)
-            i+=1
-
+            if response.status_code == 200:
+                try:
+                    tree = elemTree.fromstring(response.text)              
+                    sum_vol = 0
+                    for row in tree.findall('./row'):
+                        vol = row.find('vol').text
+                        sum_vol += int(vol)
+                                       
+                    data = {'date': YMD, 'hour': HH, 'spot': spot_list[i], 'vol': sum_vol}
+                    datas.append(data)
+                    i+=1
+                except Exception as e:
+                    print(f"Error processing data for {spot_list[i]}: {str(e)}")
+            else:
+                print(f"HTTP request failed for {spot_list[i]} with status code {response.status_code}")
 
         return datas#json.dumps(datas, ensure_ascii=False)
