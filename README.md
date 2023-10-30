@@ -1,2 +1,2 @@
 # mlops-team9
-YearDream mlprojec 파일입니다
+YearDream mlproject 파일입니다
