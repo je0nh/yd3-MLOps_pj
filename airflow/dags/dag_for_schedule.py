@@ -5,6 +5,8 @@ from datetime import datetime, timedelta
 from api_traffic import TrafficProcessor
 from api_pollution import PollutionProcessor
 from kafka_producer import KafkaProducerWrapper
+from airflow.contrib.hooks.ssh_hook import SSHHook
+from airflow.contrib.operators.ssh_operator import SSHOperator
 
 # Airflow DAG 정의
 default_args = {
@@ -77,6 +79,19 @@ send_to_kfk_traffic = PythonOperator(
     dag=dag,
 )
 
+ssh_hook = SSHHook(ssh_conn_id="conn_ml_to_hive")
+
+# SSH 연결을 사용하여 명령 실행
+ml_to_hive = SSHOperator(
+    task_id="ml_to_hive",
+    ssh_hook=ssh_hook,
+    command='docker exec -it 7a0d40193c69 python3 /app/work/ml.py',
+    dag=dag,
+)
+
 # 작업 간의 관계 설정
-[call_api_pollution >> send_to_kfk_pollution]
-[call_api_traffic >> send_to_kfk_traffic]
+call_api_pollution >> send_to_kfk_pollution
+call_api_traffic >> send_to_kfk_traffic
+
+# 카프카 보내기 작업이 완료되면 ssh gogo
+[send_to_kfk_pollution,send_to_kfk_traffic] >> ml_to_hive
