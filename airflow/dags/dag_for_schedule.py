@@ -85,7 +85,7 @@ ssh_hook = SSHHook(ssh_conn_id="conn_ml_to_hive")
 ml_to_hive = SSHOperator(
     task_id="ml_to_hive",
     ssh_hook=ssh_hook,
-    command='docker exec -it 7a0d40193c69 python3 /app/work/ml.py',
+    command='docker exec -it d457a1f4c72f python3 /app/work/ml.py',
     dag=dag,
 )
 
