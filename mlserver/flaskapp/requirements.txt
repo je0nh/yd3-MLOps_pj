@@ -1,0 +1,22 @@
+scikit-learn==1.3.0
+flask==2.3.2
+psycopg2==2.9.7
+pandas==2.1.0
+numpy
+matplotlib>=3.6.1, <3.8
+SQLAlchemy>=1.4.36
+seaborn
+numpy<2
+requests
+joblib
+lightgbm
+gunicorn==21.2.0
+hdfs
+future==0.18.3
+pure-sasl==0.6.2
+PyHive==0.7.0
+python-dateutil==2.8.2
+six==1.16.0
+thrift==0.16.0
+thrift-sasl==0.4.3
+
