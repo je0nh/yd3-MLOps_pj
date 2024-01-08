@@ -39,7 +39,8 @@
 <img src="https://img.shields.io/badge/mysql-4479A1?style=for-the-badge&logo=mysql&logoColor=white">
 <img src="https://img.shields.io/badge/metabase-509EE3?style=for-the-badge&logo=metabase&logoColor=white">
 
-
+## 시연
+[데이터 수집부터 spark까지 데이터 흐름](https://youtu.be/3kgrXjSlzMA)
 
 
 
