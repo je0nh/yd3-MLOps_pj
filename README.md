@@ -10,4 +10,6 @@
 - Docker를 사용한 컨테이너 가상화
 
 ## Architecture
-<img width="619" alt="Screenshot 2024-01-08 at 12 36 36 PM" src="https://github.com/je0nh/yd3-MLOps_pj/assets/145730125/4d7de6ec-e630-4b48-b799-43adfd49defa">
+<p align="center">
+  <img width="619" alt="Screenshot 2024-01-08 at 12 36 36 PM" src="https://github.com/je0nh/yd3-MLOps_pj/assets/145730125/4d7de6ec-e630-4b48-b799-43adfd49defa">
+<p/>
