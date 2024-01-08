@@ -39,8 +39,19 @@
 <img src="https://img.shields.io/badge/mysql-4479A1?style=for-the-badge&logo=mysql&logoColor=white">
 <img src="https://img.shields.io/badge/metabase-509EE3?style=for-the-badge&logo=metabase&logoColor=white">
 
-## 시연
+**Communication** <br>
+<img src="https://img.shields.io/badge/notion-000000?style=for-the-badge&logo=notion&logoColor=white">
+<img src="https://img.shields.io/badge/slack-4A154B?style=for-the-badge&logo=slack&logoColor=white">
+
+
+## 시연 & 노션페이지
 [데이터 수집부터 spark까지 데이터 흐름](https://youtu.be/3kgrXjSlzMA)
+[노션 회의록](https://round-helicopter-e2f.notion.site/c52684bff0dc45d4b0878d9c33ff4d3a?v=e88f973a87a94685af244e6cf56ff8d9)
+[노션 작업현황](https://round-helicopter-e2f.notion.site/772374157b3d4ca6ae459ec05e245009?v=8d3f7bb665074f4d8e51005d58db3ce3)
+
+## 발표 ppt
+[낙동강 오리알(9팀) 발표자료.pdf](https://github.com/je0nh/yd3-MLOps_pj/files/13856226/9.pdf)
+
 
 
 
