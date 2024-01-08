@@ -1,5 +1,7 @@
 # 낙동강 오리알
-<img src="https://github.com/je0nh/yd3-MLOps_pj/assets/145730125/08f4d8a8-f48c-4797-a4bc-b2559a7d1a61" width="300" height="300"/>
+<p align="center">
+  <img src="https://github.com/je0nh/yd3-MLOps_pj/assets/145730125/08f4d8a8-f48c-4797-a4bc-b2559a7d1a61" width="300" height="300"/>
+<p/>
 
 ## 프로젝트 목적
 - 이어드림 3기 - MLOps 프로젝트
