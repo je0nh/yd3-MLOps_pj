@@ -13,3 +13,7 @@
 <p align="center">
   <img width="619" alt="Screenshot 2024-01-08 at 12 36 36 PM" src="https://github.com/je0nh/yd3-MLOps_pj/assets/145730125/4d7de6ec-e630-4b48-b799-43adfd49defa">
 <p/>
+
+## Stack
+- Environment
+<img src="https://img.shields.io/badge/jupyter-#F37626?style=for-the-badge&logo=jupyter&logoColor=white">
