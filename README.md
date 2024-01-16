@@ -6,6 +6,7 @@
 <p align="center">
   <img width="928" alt="Screenshot 2024-01-16 at 6 27 43 PM" src="https://github.com/je0nh/yd3-MLOps_pj/assets/145730125/069a144a-04fe-4039-9666-94ba4eb088b2">
 <p/>
+
 - 서울 열린데이터광장에서 교통량 데이터와 대기 데이터를 받아와 대기 오염정도에 따른 교통량을 예측하는 파이프라인 구축
 - 데이터 수집부터 시각화까지 데이터 파이프라인의 end-to-end 구현
 - 자동화 파이프라인 구축
