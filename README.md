@@ -11,7 +11,7 @@
 
 ## 프로젝트 목표
 <p align="center">
-  <img width="928" alt="Screenshot 2024-01-16 at 6 27 43 PM" src="https://github.com/je0nh/yd3-MLOps_pj/assets/145730125/069a144a-04fe-4039-9666-94ba4eb088b2">
+  <img width="620" alt="Screenshot 2024-01-16 at 6 27 43 PM" src="https://github.com/je0nh/yd3-MLOps_pj/assets/145730125/069a144a-04fe-4039-9666-94ba4eb088b2">
 <p/>
 
 - 서울 열린데이터광장에서 교통량 데이터와 대기 데이터를 받아와 대기 오염정도에 따른 교통량을 예측하는 파이프라인 구축
@@ -20,7 +20,7 @@
 
 ## Architecture
 <p align="center">
-  <img width="619" alt="Screenshot 2024-01-08 at 12 36 36 PM" src="https://github.com/je0nh/yd3-MLOps_pj/assets/145730125/4d7de6ec-e630-4b48-b799-43adfd49defa">
+  <img width="620" alt="Screenshot 2024-01-08 at 12 36 36 PM" src="https://github.com/je0nh/yd3-MLOps_pj/assets/145730125/4d7de6ec-e630-4b48-b799-43adfd49defa">
 <p/>
 
 ## 프로젝트 진행과정
@@ -61,24 +61,24 @@
 ## 프로젝트 구현 내용
 1. Kafka를 통해 데이터 수신
 <p align="center">
-  <img width="758" alt="Screenshot 2024-01-16 at 6 45 43 PM" src="https://github.com/je0nh/yd3-MLOps_pj/assets/145730125/3c747c01-4b1b-4647-a089-9e5539520a7c">
+  <img width="620" alt="Screenshot 2024-01-16 at 6 45 43 PM" src="https://github.com/je0nh/yd3-MLOps_pj/assets/145730125/3c747c01-4b1b-4647-a089-9e5539520a7c">
 </p>
 
 2. Spark를 통한 map, reduce
 
 3. HDFS에 데이터 적제
 <p align="center"> 
-  <img width="711" alt="Screenshot 2024-01-16 at 6 47 06 PM" src="https://github.com/je0nh/yd3-MLOps_pj/assets/145730125/4e7dc8d5-9d9a-40b8-b9a2-088fdfb6e98b">
+  <img width="620" alt="Screenshot 2024-01-16 at 6 47 06 PM" src="https://github.com/je0nh/yd3-MLOps_pj/assets/145730125/4e7dc8d5-9d9a-40b8-b9a2-088fdfb6e98b">
 </p>
 
 4. Flask API 호출
 <p align="center"> 
-  <img width="1134" alt="Screenshot 2024-01-16 at 6 49 37 PM" src="https://github.com/je0nh/yd3-MLOps_pj/assets/145730125/d3539ebc-eca9-402c-aa09-a3bc03631950">
+  <img width="620" alt="Screenshot 2024-01-16 at 6 49 37 PM" src="https://github.com/je0nh/yd3-MLOps_pj/assets/145730125/d3539ebc-eca9-402c-aa09-a3bc03631950">
 </p>
 
 5. Metabase를 이용한 시각화
 <p align="center">
-  <img width="1202" alt="Screenshot 2024-01-16 at 6 50 29 PM" src="https://github.com/je0nh/yd3-MLOps_pj/assets/145730125/042ec8ea-1c3f-4d8b-9194-9c6bb6f03824">
+  <img width="620" alt="Screenshot 2024-01-16 at 6 50 29 PM" src="https://github.com/je0nh/yd3-MLOps_pj/assets/145730125/042ec8ea-1c3f-4d8b-9194-9c6bb6f03824">
 </p>
 
 ## 프로젝트 한계 및 개선방안
@@ -86,12 +86,12 @@
 - 시간상의 한계로 HBASE는 사용하지 못함
 
 ## 시연 & 노션페이지
-- [데이터 수집부터 spark까지 데이터 흐름](https://youtu.be/3kgrXjSlzMA) <br>
-- [노션 회의록](https://round-helicopter-e2f.notion.site/c52684bff0dc45d4b0878d9c33ff4d3a?v=e88f973a87a94685af244e6cf56ff8d9) <br>
-- [노션 작업현황](https://round-helicopter-e2f.notion.site/772374157b3d4ca6ae459ec05e245009?v=8d3f7bb665074f4d8e51005d58db3ce3)
+[<p align="center"><img width="620" alt="Screenshot 2024-02-07 at 4 41 46 PM" src="https://github.com/je0nh/yd3-MLOps_pj/assets/145730125/6a67972d-7887-4753-ae1f-ce13705ede3a"></p>](https://youtu.be/3kgrXjSlzMA)
+[<p align="center"><img width="620" alt="Screenshot 2024-02-07 at 4 42 42 PM" src="https://github.com/je0nh/yd3-MLOps_pj/assets/145730125/20bba379-45d3-44b3-b107-ab1c4d228b49"></p>](https://round-helicopter-e2f.notion.site/c52684bff0dc45d4b0878d9c33ff4d3a?v=e88f973a87a94685af244e6cf56ff8d9)
+[<p align="center"><img width="620" alt="Screenshot 2024-02-07 at 4 43 14 PM" src="https://github.com/je0nh/yd3-MLOps_pj/assets/145730125/6d854d6b-d20d-4565-b3c2-da9f5d21a8ab"></p>](https://round-helicopter-e2f.notion.site/772374157b3d4ca6ae459ec05e245009?v=8d3f7bb665074f4d8e51005d58db3ce3)
 
 ## 발표 ppt
-- [낙동강 오리알(9팀) 발표자료.pdf](https://github.com/je0nh/yd3-MLOps_pj/files/13856226/9.pdf)
+[<p align="center"><img width="620" alt="Screenshot 2024-02-07 at 4 40 50 PM" src="https://github.com/je0nh/yd3-MLOps_pj/assets/145730125/a0dcdd2f-c088-474c-bdf7-bf07889a0fd8"></p>](https://github.com/je0nh/yd3-MLOps_pj/files/13856226/9.pdf)
 
 
 
