@@ -91,8 +91,9 @@
 [<p align="center"><img width="620" alt="Screenshot 2024-02-07 at 4 43 14 PM" src="https://github.com/je0nh/yd3-MLOps_pj/assets/145730125/6d854d6b-d20d-4565-b3c2-da9f5d21a8ab"></p>](https://round-helicopter-e2f.notion.site/772374157b3d4ca6ae459ec05e245009?v=8d3f7bb665074f4d8e51005d58db3ce3)
 
 ## 발표 ppt
-([낙동강 오리알(9팀) 발표자료.pdf](https://github.com/je0nh/yd3-MLOps_pj/files/14190590/9.pdf)
-)
+[<img width="620" alt="Screenshot 2024-02-07 at 4 40 50 PM" src="https://github.com/je0nh/yd3-MLOps_pj/assets/145730125/52ea5db7-7b55-4091-a320-fe11a4327f35">
+](https://github.com/je0nh/yd3-MLOps_pj/files/14190590/9.pdf)
+
 
 
 
