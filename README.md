@@ -86,9 +86,9 @@
 - 시간상의 한계로 HBASE는 사용하지 못함
 
 ## 시연 & 노션페이지 (클릭시 페이지 이동)
-[<p align="center"><img width="620" alt="Screenshot 2024-02-07 at 4 41 46 PM" src="https://github.com/je0nh/yd3-MLOps_pj/assets/145730125/6a67972d-7887-4753-ae1f-ce13705ede3a"></p>](https://youtu.be/3kgrXjSlzMA)
-[<p align="center"><img width="620" alt="Screenshot 2024-02-07 at 4 42 42 PM" src="https://github.com/je0nh/yd3-MLOps_pj/assets/145730125/20bba379-45d3-44b3-b107-ab1c4d228b49"></p>](https://round-helicopter-e2f.notion.site/c52684bff0dc45d4b0878d9c33ff4d3a?v=e88f973a87a94685af244e6cf56ff8d9)
-[<p align="center"><img width="620" alt="Screenshot 2024-02-07 at 4 43 14 PM" src="https://github.com/je0nh/yd3-MLOps_pj/assets/145730125/6d854d6b-d20d-4565-b3c2-da9f5d21a8ab"></p>](https://round-helicopter-e2f.notion.site/772374157b3d4ca6ae459ec05e245009?v=8d3f7bb665074f4d8e51005d58db3ce3)
+[<img width="620" alt="Screenshot 2024-02-07 at 4 41 46 PM" src="https://github.com/je0nh/yd3-MLOps_pj/assets/145730125/6a67972d-7887-4753-ae1f-ce13705ede3a">](https://youtu.be/3kgrXjSlzMA)
+[<img width="620" alt="Screenshot 2024-02-07 at 4 42 42 PM" src="https://github.com/je0nh/yd3-MLOps_pj/assets/145730125/20bba379-45d3-44b3-b107-ab1c4d228b49">](https://round-helicopter-e2f.notion.site/c52684bff0dc45d4b0878d9c33ff4d3a?v=e88f973a87a94685af244e6cf56ff8d9)
+[<img width="620" alt="Screenshot 2024-02-07 at 4 43 14 PM" src="https://github.com/je0nh/yd3-MLOps_pj/assets/145730125/6d854d6b-d20d-4565-b3c2-da9f5d21a8ab">](https://round-helicopter-e2f.notion.site/772374157b3d4ca6ae459ec05e245009?v=8d3f7bb665074f4d8e51005d58db3ce3)
 
 ## 발표 ppt
 [<img width="620" alt="Screenshot 2024-02-07 at 4 40 50 PM" src="https://github.com/je0nh/yd3-MLOps_pj/assets/145730125/52ea5db7-7b55-4091-a320-fe11a4327f35">
